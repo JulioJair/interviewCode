@@ -1,0 +1,3 @@
+/mnt/c/Users/juliojair/OneDrive/Documentos/CLionProjects/listdirf/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/juliojair/OneDrive/Documentos/CLionProjects/listdirf/cmake-build-debug/CMakeFiles/edit_cache.dir
+/mnt/c/Users/juliojair/OneDrive/Documentos/CLionProjects/listdirf/cmake-build-debug/CMakeFiles/listdirf.dir
