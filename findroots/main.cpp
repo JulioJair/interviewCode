@@ -3,7 +3,6 @@
 #include <iostream>
 #include <cmath>
 #include <string>
-#include <z3.h>
 
 using namespace std;
 
@@ -20,11 +19,10 @@ int main(int argc, char *argv[]) {
 
     string dString(argv[4]);
     double d = stof(dString);
-//    cout << "\nParameters inline acquired correctly" << endl;
+
     double r1, r2, r3;
     double Re[3] = {};
     const double PI = 4 * atan(1);
-
 
     // Reduced equation: X^3 - 3pX - 2q = 0, where X = x-b/(3a)
     double p = (pow(b, 2) - 3 * a * c) / (9. * pow(a, 2));
