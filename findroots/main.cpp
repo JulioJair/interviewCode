@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cmath>
 #include <string>
+#include <z3.h>
 
 using namespace std;
 
@@ -20,7 +21,8 @@ int main(int argc, char *argv[]) {
     string dString(argv[4]);
     double d = stof(dString);
 //    cout << "\nParameters inline acquired correctly" << endl;
-    float r1, r2, r3 = 0;
+    double r1, r2, r3;
+    double Re[3] = {};
     const double PI = 4 * atan(1);
 
 
@@ -32,28 +34,34 @@ int main(int argc, char *argv[]) {
     // Discriminant
     double discriminant = pow(p, 3) - pow(q, 2);
 
+    cout << "{";
     if (discriminant > 0) //then the equation has three distinct real roots.
     {
         double theta = acos(q / (p * sqrt(p)));
         double r = 2 * sqrt(p);
-        for (int n = 0; n < 3; n++) cout << r * cos((theta + 2 * n * PI) / 3) - offset << '\n';
+        for (int n = 0; n < 3; n++) Re[n] = r * cos((theta + 2 * n * PI) / 3) - offset;
+        cout << Re[0] << "," << Re[1] << "," << Re[2];
     } else {
         double gamma1 = cbrt(q + sqrt(-discriminant));
         double gamma2 = cbrt(q - sqrt(-discriminant));
 
-        cout << gamma1 + gamma2 - offset << '\n';
+        r1 = gamma1 + gamma2 - offset;
+        cout << r1;
 
         double re = -0.5 * (gamma1 + gamma2) - offset;
-        double im = (gamma1 - gamma2) * sqrt(3) / 2;
+//        double im = (gamma1 - gamma2) * sqrt(3) / 2;
         if (discriminant == 0) //then the equation has a repeated root and all its roots are real.
         {
-            cout << re << '\n';
-            cout << re << '\n';
+            r2 = re;
+            r3 = re;
+            cout << "," << r2 << "," << r3;
         } else { //then the equation has one real root and two non-real complex conjugate roots.
-            cout << re << " + " << im << " i\n";
-            cout << re << " - " << im << " i\n";
+//            cout << re << " + " << im << " i\n";
+//            cout << re << " - " << im << " i\n";
         }
     }
+
+    cout << "}" << endl;
 
     return 0;
 }
